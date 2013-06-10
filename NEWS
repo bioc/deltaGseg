@@ -1,0 +1,4 @@
+v1.0.2
+- corrected errors generated in denoiseSegments when segments are too small
+- refined plotting with data that has many subpopulations (>10)
+- more robust argument selection in functions
