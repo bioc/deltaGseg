@@ -267,12 +267,12 @@ setMethod("denoiseSegments",
               #changed due to changepoint function wrap!
               res<-cpt.mean(dat,method=seg_method,penalty="Asymptotic",pen.value=0.01,Q=maxQ,class=FALSE)
               if(seg_method=="BinSeg") {
-                mm_est_binseg<-res$cps[1,1:res$op.cpts]
+                mm_est_binseg<-res#$cps[1,1:res$op.cpts]
                 cp<-sort(c(0,mm_est_binseg,length(dat)))
               }
               
               else if(seg_method=="SegNeigh") {
-                mm_est_segneigh<-res$cps[(res$op.cpts+1),1:res$op.cpts]
+                mm_est_segneigh<-res#$cps[(res$op.cpts+1),1:res$op.cpts]
                 cp<-sort(c(0,mm_est_segneigh,length(dat)))                
               }
 
