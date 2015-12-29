@@ -464,7 +464,13 @@ setMethod("diagnosticPlots",
               ff<-cbind(1:dim(ff)[1],ff)
               names(ff)[1]<-c("lag")
               ff<-melt(ff,id="lag")
-              p2<-qplot(lag,value,width=0.2,data=ff,geom="bar",stat="identity",position="identity",xlab="Lag",ylab="ACF",main="Autocorrelations")+
+              #p2<-qplot(lag,value,width=0.2,data=ff,geom="bar",stat="identity",position="identity",xlab="Lag",ylab="ACF",main="Autocorrelations")+
+              #geom_hline(yintercept=0,color="red",alpha=0.9,size=0.2) +
+              #geom_hline(yintercept=-significance_level,color="blue",alpha=0.9,size=0.3,linetype="dashed") +
+              #geom_hline(yintercept=significance_level,color="blue",alpha=0.9,size=0.3,linetype="dashed")
+              p2<-ggplot(data=ff,aes(x=lag,y=value)) +
+                geom_bar(stat="identity",position="identity") +
+                labs(x="Lag",y="ACF",main="Autocorrelations") +
                 geom_hline(yintercept=0,color="red",alpha=0.9,size=0.2) +
                 geom_hline(yintercept=-significance_level,color="blue",alpha=0.9,size=0.3,linetype="dashed") +
                 geom_hline(yintercept=significance_level,color="blue",alpha=0.9,size=0.3,linetype="dashed")
